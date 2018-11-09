@@ -5,8 +5,6 @@ import sys
 def main():
     inFile = sys.argv[1]
     inFile2 = sys.argv[2]
-    
-
 
     with open(inFile,'r') as i:
         f1 = i.readlines()
@@ -57,8 +55,8 @@ def main():
                 if cookie not in dict1.keys():
                     dict1[cookie] = []
 
-    for key in dict1.keys():
-        print(key + ": " + str(dict1[key]))
+    # for key in dict1.keys():
+    #     print(key + ": " + str(dict1[key]))
 
 
     with open(inFile,'r') as i:
@@ -110,14 +108,30 @@ def main():
                 if cookie not in dict2.keys():
                     dict2[cookie] = []
 
-    print("second File-------\n\n")
+    print("\n\nsecond File-------\n\n")
 
-    for key in dict2.keys():
-        print(key + ": " + str(dict1[key]))
+    # for key in dict2.keys():
+    #     print(key + ": " + str(dict1[key]))
+    # for the first question
+    # need a dictionary for all the segments as keys
+    # and a values as set of cookies or list of cookies
+
+    # 2nd Requirement
+    # I may just do it in the other way
+    
 
 
-
-        
+    cookkieeeee = []
+    extraSeg = []
+    for key in dict1.keys():
+        if key not in dict2.keys():
+            cookkieeeee.append(key)
+        else:
+            for segment in dict1[key]:
+                if segment not in dict2[key]:
+                    extraSeg.append([key, segment])
+    
+    print(extraSeg)
 # processedLines = manipulateData(lines)
 
     # with open(outFile,'w') as o:

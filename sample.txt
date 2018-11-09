@@ -6,6 +6,9 @@ SLF4J: Found binding in [jar:file:/Users/morrisb/.gradle/caches/modules-2/files-
 SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
 ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.
+10:46:57.237 [main] ERROR com.audiencescience.app.smac2.functional.EvaluateProfiles - Begin loading Smac2 model
+elapsed time = 52354ms
+10:47:49.594 [main] ERROR com.audiencescience.app.smac2.functional.EvaluateProfiles - Reading profiles from /Users/morrisb/work/data/recent/part-r-01499 with limit 1000000
 0000001aa104bdfc08241f746c7510cf ==> []
 000000487054aa8489ae5c95a38225cd ==> []
 00000062e064aaf40277135de48c95e2 ==> []
