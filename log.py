@@ -135,20 +135,29 @@ def main():
                     missingSegments[segment2].add(key)
 
 
-    print('Segments with added cookies: ' + str(len(segments)) + " / " + str(len(dict1.keys())))
+    print('Segments with added cookies: ' + str(len(segments.keys())) + " / " + str(len(dict1.keys())))
     lineNum = 0
-    for seg in segments.keys():
-        print(str(lineNum) + " " + seg + " " + str(len(segments[seg])) + " " + str(segments[seg]))
+    sortedKey = list(segments.keys())
+    sortedKey.sort()
+    for seg in sortedKey:
+        a = list(segments[seg])
+        print(str(lineNum) + "\t" + seg + "\t" + str(len(segments[seg])) + "\t" + str(a))
         lineNum += 1 
 
+    print("")
+    print('Segments with missing cookies: ' + str(len(missingSegments.keys())) + " / " + str(len(dict1.keys())))
+
     lineNum = 0
-    for seg in missingSegments.keys():
-        print(str(lineNum) + " " + seg + " " + str(len(missingSegments[seg])) + " " + str(missingSegments[seg]))
+    sortedMissingSeg = list(missingSegments.keys())
+    sortedMissingSeg.sort()
+    for seg in sortedMissingSeg:
+        values = list(missingSegments[seg])
+        print(str(lineNum) + "\t" + seg + "\t" + str(len(missingSegments[seg])) + "\t" + str(values))
         lineNum += 1 
 
-    for key in dict2.keys():
-        if key not in dict1.keys():
-            print(key + str(dict2[key]))
+    # for key in dict2.keys():
+    #     if key not in dict1.keys():
+    #         print(key + str(dict2[key]))
 
 # processedLines = manipulateData(lines)
 
