@@ -108,7 +108,6 @@ def main():
                 if cookie not in dict2.keys():
                     dict2[cookie] = []
 
-    print("\n\nsecond File-------\n\n")
 
     # for key in dict2.keys():
     #     print(key + ": " + str(dict1[key]))
@@ -122,18 +121,27 @@ def main():
 
     segments = defaultdict(set)
     missingSegments = defaultdict(set)
+    
+    cookieWithExtra = defaultdict(set)
+    cookieWithLess = defaultdict(set)
+
     cookkieeeee = []
+    totalSegment = set()
     for key in dict1.keys():
         if key not in dict2.keys():
             cookkieeeee.append(key)
         else:
             for segment in dict1[key]:
+                totalSegment.add(segment)
                 if segment not in dict2[key]:
                     segments[segment].add(key)
+                    cookieWithExtra[key].add(segment)
             for segment2 in dict2[key]:
+                totalSegment.add(segment)
+
                 if segment2 not in dict1[key]:
                     missingSegments[segment2].add(key)
-
+                    cookieWithLess[key].add(segment2)
 
     print('Segments with added cookies: ' + str(len(segments.keys())) + " / " + str(len(dict1.keys())))
     lineNum = 0
@@ -155,9 +163,31 @@ def main():
         print(str(lineNum) + "\t" + seg + "\t" + str(len(missingSegments[seg])) + "\t" + str(values))
         lineNum += 1 
 
-    # for key in dict2.keys():
-    #     if key not in dict1.keys():
-    #         print(key + str(dict2[key]))
+
+
+    print("")
+    print('Cookies with extra segments: ' + str(len(cookieWithExtra.keys())) + " / " + str(len(totalSegment)))
+
+    lineNum = 0
+    sortedCookie = list(cookieWithExtra.keys())
+    sortedCookie.sort()
+    for cookie in sortedCookie:
+        segments_ = list(cookieWithExtra[cookie])
+        print(str(lineNum) + "\t" + cookie + "\t" + str(len(cookieWithExtra[cookie])) + "\t" + str(segments_))
+        lineNum += 1 
+    
+
+    print("")
+    print('Cookies with omitted segments: ' + str(len(cookieWithLess.keys())) + " / " + str(len(totalSegment)))
+
+    lineNum = 0
+    sortedCookie2 = list(cookieWithLess.keys())
+    sortedCookie2.sort()
+    for cookie in sortedCookie2:
+        segments_ = list(cookieWithLess[cookie])
+        print(str(lineNum) + "\t" + cookie + "\t" + str(len(cookieWithLess[cookie])) + "\t" + str(segments_))
+        lineNum += 1 
+
 
 # processedLines = manipulateData(lines)
 
