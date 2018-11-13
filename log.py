@@ -1,6 +1,6 @@
 
 import sys
-
+from collections import defaultdict
 
 def main():
     inFile = sys.argv[1]
@@ -120,18 +120,36 @@ def main():
     # I may just do it in the other way
     
 
-
+    segments = defaultdict(set)
+    missingSegments = defaultdict(set)
     cookkieeeee = []
-    extraSeg = []
     for key in dict1.keys():
         if key not in dict2.keys():
             cookkieeeee.append(key)
         else:
             for segment in dict1[key]:
                 if segment not in dict2[key]:
-                    extraSeg.append([key, segment])
-    
-    print(extraSeg)
+                    segments[segment].add(key)
+            for segment2 in dict2[key]:
+                if segment2 not in dict1[key]:
+                    missingSegments[segment2].add(key)
+
+
+    print('Segments with added cookies: ' + str(len(segments)) + " / " + str(len(dict1.keys())))
+    lineNum = 0
+    for seg in segments.keys():
+        print(str(lineNum) + " " + seg + " " + str(len(segments[seg])) + " " + str(segments[seg]))
+        lineNum += 1 
+
+    lineNum = 0
+    for seg in missingSegments.keys():
+        print(str(lineNum) + " " + seg + " " + str(len(missingSegments[seg])) + " " + str(missingSegments[seg]))
+        lineNum += 1 
+
+    for key in dict2.keys():
+        if key not in dict1.keys():
+            print(key + str(dict2[key]))
+
 # processedLines = manipulateData(lines)
 
     # with open(outFile,'w') as o:

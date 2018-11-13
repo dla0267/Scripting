@@ -17,10 +17,13 @@ but the final product requires the cookies that belong to each segment.
 
 Given the baseline and test-run log files of the integration test, generate a report of the following validation errors:
 
-Segments that gained extra cookies (segements are not in the baseline cookies, but there are some segments in cookies for log.)
+Segments that gained extra cookies (segements are not in the baseline cookies, but there are some segments in  cookies for only log.)
+    store that segment as key and value of cookiees in baseline
+
 Segments that lost cookies  (segements are in the baseline, but not in just log)
+
 Cookies assigned to extra segments (segments that appears more than one)
-Cookies omitted from segments
+Cookies omitted from segments  (cookies with segments that are only in baseline not in the log.)
 
 A segment may have both extra cookies and missing cookies (different cookies!). Similarly, a cookie may be both assigned to extra segments and omitted from segments.
 
